@@ -93,3 +93,62 @@ const productos =[
       
       })
       console.log(precioTotal)
+
+
+      const students = [
+        { id: 1, name: "juan", age: 17, height: 1.60, gender: 'M' },
+        { id: 4, name: "pedro", age: 15, height: 1.90, gender: 'M' },
+        { id: 2, name: "ana", age: 16, height: 1.65, gender: 'F' },
+        { id: 3, name: "sofia", age: 17, height: 1.72, gender: 'F' },
+        { id: 6, name: "pedro", age: 12, height: 1.70, gender: 'M' },
+        { id: 5, name: "rosa", age: 19, height: 1.67, gender: 'F' },
+      ];
+      
+      const califications = [
+        { id: 1, calification: 5 },
+        { id: 4, calification: 5 },
+        { id: 3, calification: 5 },
+        { id: 2, calification: 1 },
+        { id: 5, calification: 3 },
+        { id: 6, calification: 4 },
+      ]
+
+   //promedio
+       const totalaltura = students.reduce((sumaaultura, students)=> sumaaultura + students.height,0)
+       const promedio = totalaltura / students.length;
+       console.log(totalaltura);
+       console.log(promedio)
+
+        
+       //cantidad de m-f
+     
+     const filtro = students.filter(student => student.gender === "M" );
+      const filtromujer = students.filter(student=>student.gender==="F")
+    
+      console.log("total de hombres"+":",filtro.length)
+      console.log("total de mujeres "+":",filtromujer.length)
+
+      let contadorh=0;
+      let contadorm=0;
+      students.forEach(student=>{
+        if(student.gender==="M"){
+contadorh++
+        }
+        if(student.gender =="F")
+        contadorm++
+      })
+      console.log(contadorh)
+      console.log(contadorm)
+
+
+      // asignar calificacion
+      const student =students.map(student=>{
+        const calification = califications.find(calification=>{
+          if(student.id === calification.id){
+            student['calificacion'] = calification.calification
+          }
+        })
+        console.log(student)
+
+      })
+      
