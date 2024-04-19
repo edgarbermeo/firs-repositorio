@@ -38,14 +38,31 @@ console.log("el promedio es : ", promedio)
 
 
 //cantidad de m-f
- function calcularcantidadsexo(students){
-    const filtroh = students.filter(student => student.gender === "M").length;
-    const filtromujer = students.filter(student => student.gender === "F").length;
-    return{filtroh,filtromujer};
+
+
+ function calculateAmount(students,data){
+    let count = 0;
+    
+    students.forEach(student =>  {
+        if(student.gender === data){
+       count++  
+          }
+
+        
+      
+    });
+    return count;
+    
+    //const filtroh = students.filter(student => student.gender === "M").length;
+    //const filtromujer = students.filter(student => student.gender === "F").length;
+    //return{filtroh,filtromujer};
  }
- const cantidadt = calcularcantidadsexo(students);
- console.log("cantidad hombres" , cantidadt.filtroh)
- console.log("cantidad mujer " ,cantidadt.filtromujer)
+ const amountamle = calculateAmount(students,'M');
+ const amountfemale = calculateAmount(students,'F');
+
+ console.log("Cantidad de mujeres:", amountfemale);
+console.log("Cantidad de hombres:", amountamle);
+ 
 
 
 //console.log("total de hombres" + ":", filtro.length)
@@ -55,8 +72,8 @@ console.log("el promedio es : ", promedio)
 
 // asignar calificacion
 
-function asignarnota (students,califications){
-    const student = students.map(student => {
+function assignNote (students,califications){
+   for( const student of students){
         const calification = califications.find(calification => student.id === calification.id);
             
                if(calification){
@@ -64,9 +81,25 @@ function asignarnota (students,califications){
           
                } 
 
-    }) 
+    } 
     return students;
 }
-
-const nota = asignarnota(students,califications);
+const nota = assignNote(students,califications);
 console.log(nota)
+
+
+// con map y spread 
+/*function assignNote2(students,califications){
+    const student=  students.map(student=>{
+        const calification = califications.find(calification => student.id === calification.id);
+        if(calification){
+            //funcion spread expandir elementos iterables 
+            return { ...student,calification: calification.calification};
+        }
+       
+    });
+    return student;
+}
+const note = assignNote2(students,califications);
+console.log(note)
+*/
